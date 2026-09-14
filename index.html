@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 文档库</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --primary-color: #007bff;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-color); color: var(--text-color); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .container { max-width: 800px; width: 100%; }
+        header { text-align: center; margin-bottom: 40px; }
+        #file-list { list-style: none; padding: 0; }
+        #file-list li { background: var(--card-bg); margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        #file-list li:hover { transform: translateY(-2px); }
+        #file-list a { display: block; padding: 15px 20px; text-decoration: none; color: var(--text-color); font-weight: 500; }
+        #viewer { display: none; background: var(--card-bg); padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); line-height: 1.6; }
+        #viewer h1 { color: var(--primary-color); border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .back-btn { display: inline-block; margin-bottom: 20px; color: var(--primary-color); text-decoration: none; font-weight: bold; cursor: pointer; }
+        .loading { text-align: center; padding: 50px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>我的 Markdown 文档库</h1>
+            <p>点击下方文件查看内容</p>
+        </header>
+
+        <div id="app">
+            <div class="loading">加载中...</div>
+        </div>
+    </div>
+
+    <script>
+        const app = document.getElementById('app');
+
+        async function init() {
+            const params = new URLSearchParams(window.location.search);
+            const fileName = params.get('file');
+
+            if (fileName) {
+                await showFile(fileName);
+            } else {
+                await showFileList();
+            }
+        }
+
+        async function showFileList() {
+            try {
+                const response = await fetch('files.json');
+                const files = await response.json();
+                
+                let html = '<ul id="file-list">';
+                files.forEach(file => {
+                    html += <li><a href="?file="></a></li>;
+                });
+                html += '</ul>';
+                app.innerHTML = html;
+            } catch (error) {
+                app.innerHTML = '<p>无法加载文件列表。请确保 files.json 存在且格式正确。</p>';
+            }
+        }
+
+        async function showFile(fileName) {
+            try {
+                const response = await fetch(iles/);
+                if (!response.ok) throw new Error('File not found');
+                const text = await response.text();
+                
+                const content = marked.parse(text);
+                app.innerHTML = 
+                    <a class="back-btn" href="index.html">← 返回文件列表</a>
+                    <div id="viewer"></div>
+                ;
+                document.title = fileName.replace('.md', '') + ' - Markdown 文档库';
+            } catch (error) {
+                app.innerHTML = 
+                    <a class="back-btn" href="index.html">← 返回文件列表</a>
+                    <p>错误：无法找到或读取该文件。</p>
+                ;
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
