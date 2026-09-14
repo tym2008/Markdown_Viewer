@@ -1,0 +1,29 @@
+{
+    "name":  "markdown_pub",
+    "version":  "1.0.0",
+    "description":  "����һ������չʾ�Ͳ鿴 Markdown �ļ��ľ�̬��վ��",
+    "main":  "index.js",
+    "scripts":  {
+                    "dev":  "vite",
+                    "build":  "vite build",
+                    "preview":  "vite preview"
+                },
+    "repository":  {
+                       "type":  "git",
+                       "url":  "git+https://github.com/tym2008/Markdown_Viewer.git"
+                   },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "ISC",
+    "type":  "commonjs",
+    "bugs":  {
+                 "url":  "https://github.com/tym2008/Markdown_Viewer/issues"
+             },
+    "homepage":  "https://github.com/tym2008/Markdown_Viewer#readme",
+    "devDependencies":  {
+                            "marked":  "^18.0.13",
+                            "vite":  "^8.3.0"
+                        }
+}

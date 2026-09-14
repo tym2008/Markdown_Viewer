@@ -1,0 +1,75 @@
+:root {
+    --bg-color: #f4f4f9;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --primary-color: #007bff;
+}
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: var(--bg-color); 
+    color: var(--text-color); 
+    margin: 0; 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+#app { 
+    max-width: 800px; 
+    width: 100%; 
+}
+
+header { 
+    text-align: center; 
+    margin-bottom: 40px; 
+}
+
+#file-list { 
+    list-style: none; 
+    padding: 0; 
+}
+
+#file-list li { 
+    background: var(--card-bg); 
+    margin-bottom: 10px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+    transition: transform 0.2s; 
+}
+
+#file-list li:hover { 
+    transform: translateY(-2px); 
+}
+
+#file-list a { 
+    display: block; 
+    padding: 15px 20px; 
+    text-decoration: none; 
+    color: var(--text-color); 
+    font-weight: 500; 
+}
+
+#viewer { 
+    background: var(--card-bg); 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    line-height: 1.6; 
+}
+
+#viewer h1 { 
+    color: var(--primary-color); 
+    border-bottom: 1px solid #eee; 
+    padding-bottom: 10px; 
+}
+
+.back-btn { 
+    display: inline-block; 
+    margin-bottom: 20px; 
+    color: var(--primary-color); 
+    text-decoration: none; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
