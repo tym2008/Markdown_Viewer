@@ -23,7 +23,7 @@ function init() {
 }
 
 function showFileList() {
-    let html = '<header><h1>我的 Markdown 文档库</h1><p>点击下方文件查看内容</p></header>';
+    let html = '<header><h1>tym\'s Markdown File List</h1><p>Click on a file to view its content</p></header>';
     html += '<ul id="file-list">';
     files.forEach(file => {
         html += '<li><a href="?file=' + encodeURIComponent(file) + '">' + file.replace('.md', '') + '</a></li>';
@@ -39,10 +39,10 @@ async function showFile(fileName) {
         const text = await response.text();
 
         const content = marked.parse(text);
-        app.innerHTML = '<a class="back-btn" href="/">← 返回文件列表</a><div id="viewer">' + content + '</div>';
-        document.title = fileName.replace('.md', '') + ' - Markdown 文档库';
+        app.innerHTML = '<a class="back-btn" href="/">← Return to File List</a><div id="viewer">' + content + '</div>';
+        document.title = fileName.replace('.md', '') + ' - Markdown File List';
     } catch (error) {
-        app.innerHTML = '<a class="back-btn" href="/">← 返回文件列表</a><p>错误：无法找到或读取该文件。</p>';
+        app.innerHTML = '<a class="back-btn" href="/">← Return to File List</a><p>Error: Could Not Found the file</p>';
     }
 }
 
