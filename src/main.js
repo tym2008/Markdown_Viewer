@@ -1,4 +1,4 @@
-import { marked } from 'marked';
+ï»¿import { marked } from 'marked';
 import './style.css';
 
 const app = document.getElementById('app');
@@ -19,7 +19,7 @@ async function showFileList() {
         const response = await fetch('/files.json');
         const files = await response.json();
         
-        let html = '<header><h1>ÎÒµÄ Markdown ÎÄµµ¿â</h1><p>µã»÷ÏÂ·½ÎÄ¼ş²é¿´ÄÚÈİ</p></header>';
+        let html = '<header><h1>æˆ‘çš„ Markdown æ–‡æ¡£åº“</h1><p>ç‚¹å‡»ä¸‹æ–¹æ–‡ä»¶æŸ¥çœ‹å†…å®¹</p></header>';
         html += '<ul id="file-list">';
         files.forEach(file => {
             html += '<li><a href="?file=' + encodeURIComponent(file) + '">' + file.replace('.md', '') + '</a></li>';
@@ -27,7 +27,7 @@ async function showFileList() {
         html += '</ul>';
         app.innerHTML = html;
     } catch (error) {
-        app.innerHTML = '<p>ÎŞ·¨¼ÓÔØÎÄ¼şÁĞ±í¡£</p>';
+        app.innerHTML = '<p>æ— æ³•åŠ è½½æ–‡ä»¶åˆ—è¡¨ã€‚</p>';
     }
 }
 
@@ -38,10 +38,10 @@ async function showFile(fileName) {
         const text = await response.text();
         
         const content = marked.parse(text);
-        app.innerHTML = '<a class="back-btn" href="/">¡û ·µ»ØÎÄ¼şÁĞ±í</a><div id="viewer">' + content + '</div>';
-        document.title = fileName.replace('.md', '') + ' - Markdown ÎÄµµ¿â';
+        app.innerHTML = '<a class="back-btn" href="/">â† è¿”å›æ–‡ä»¶åˆ—è¡¨</a><div id="viewer">' + content + '</div>';
+        document.title = fileName.replace('.md', '') + ' - Markdown æ–‡æ¡£åº“';
     } catch (error) {
-        app.innerHTML = '<a class="back-btn" href="/">¡û ·µ»ØÎÄ¼şÁĞ±í</a><p>´íÎó£ºÎŞ·¨ÕÒµ½»ò¶ÁÈ¡¸ÃÎÄ¼ş¡£</p>';
+        app.innerHTML = '<a class="back-btn" href="/">â† è¿”å›æ–‡ä»¶åˆ—è¡¨</a><p>é”™è¯¯ï¼šæ— æ³•æ‰¾åˆ°æˆ–è¯»å–è¯¥æ–‡ä»¶ã€‚</p>';
     }
 }
 

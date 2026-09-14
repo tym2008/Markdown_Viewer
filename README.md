@@ -1,16 +1,16 @@
-# Markdown ÎÄµµ¿â
+# Markdown æ–‡æ¡£åº“
 
-ÕâÊÇÒ»¸öÊ¹ÓÃÏÖ´úÇ°¶Ë¿ò¼Ü£¨Vite£©¹¹½¨µÄ Markdown ÎÄµµ¿â¡£
+è¿™æ˜¯ä¸€ä¸ªä½¿ç”¨ç°ä»£å‰ç«¯æ¡†æ¶ï¼ˆViteï¼‰æ„å»ºçš„ Markdown æ–‡æ¡£åº“ã€‚
 
-## Ê¹ÓÃ·½·¨
+## ä½¿ç”¨æ–¹æ³•
 
-1. °²×°ÒÀÀµ£ºnpm install
-2. Æô¶¯¿ª·¢·şÎñÆ÷£ºnpm run dev
-3. ¹¹½¨Éú²ú°æ±¾£ºnpm run build
+1. å®‰è£…ä¾èµ–ï¼š`npm install`
+2. å¯åŠ¨å¼€å‘æœåŠ¡å™¨ï¼š`npm run dev`
+3. æ„å»ºç”Ÿäº§ç‰ˆæœ¬ï¼š`npm run build`
 
-## ²¿Êğµ½ Cloudflare Pages
+## éƒ¨ç½²åˆ° Cloudflare Pages
 
-1. ÍÆËÍµ½ GitHub¡£
-2. ÔÚ Cloudflare Pages ÖĞÁ¬½Ó GitHub ²Ö¿â¡£
-3. ÉèÖÃ¹¹½¨ÃüÁî£ºnpm run build
-4. ÉèÖÃÊä³öÄ¿Â¼£ºdist
+1. æ¨é€åˆ° GitHubã€‚
+2. åœ¨ Cloudflare Pages ä¸­è¿æ¥ GitHub ä»“åº“ã€‚
+3. è®¾ç½®æ„å»ºå‘½ä»¤ï¼š`npm run build`
+4. è®¾ç½®è¾“å‡ºç›®å½•ï¼š`dist`
