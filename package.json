@@ -8,7 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "marked": "^16.0.0"
+    "katex": "^0.18.7",
+    "marked": "^16.0.0",
+    "marked-katex-extension": "^5.1.12"
   },
   "devDependencies": {
     "vite": "^7.0.0"

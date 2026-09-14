@@ -6,20 +6,44 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const VIRTUAL_MODULE_ID = 'virtual:file-list';
+const RESOLVED_VIRTUAL_MODULE_ID = '\0' + VIRTUAL_MODULE_ID;
+
 export default defineConfig({
   plugins: [
     {
-      name: 'markdown-files-plugin',
-      configResolved(config) {
-        const filesDir = path.resolve(__dirname, 'files');
+      name: 'markdown-auto-scan',
+      resolveId(id) {
+        if (id === VIRTUAL_MODULE_ID) {
+          return RESOLVED_VIRTUAL_MODULE_ID;
+        }
+      },
+      load(id) {
+        if (id === RESOLVED_VIRTUAL_MODULE_ID) {
+          const filesDir = path.resolve(__dirname, 'public/files');
+          let files = [];
+          if (fs.existsSync(filesDir)) {
+            files = fs.readdirSync(filesDir)
+              .filter(f => f.endsWith('.md'))
+              .sort();
+          }
+          const moduleCode = 'export default ' + JSON.stringify(files) + ';';
+          return moduleCode;
+        }
+      },
+      configureServer(server) {
+        const filesDir = path.resolve(__dirname, 'public/files');
         if (fs.existsSync(filesDir)) {
-          const files = fs.readdirSync(filesDir).filter(f => f.endsWith('.md'));
-          const manifest = JSON.stringify(files);
-          
-          const publicDir = path.resolve(__dirname, 'public');
-          if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir);
-          
-          fs.writeFileSync(path.resolve(publicDir, 'files.json'), manifest);
+          server.watcher.add(filesDir);
+          server.watcher.on('change', (filePath) => {
+            if (filePath.startsWith(filesDir) && filePath.endsWith('.md')) {
+              const mod = server.moduleGraph.getModuleById(RESOLVED_VIRTUAL_MODULE_ID);
+              if (mod) {
+                server.moduleGraph.invalidateModule(mod);
+                server.ws.send({ type: 'full-reload' });
+              }
+            }
+          });
         }
       }
     }
