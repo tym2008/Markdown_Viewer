@@ -3,73 +3,119 @@
     --card-bg: #ffffff;
     --text-color: #333;
     --primary-color: #007bff;
+    --border-color: #e0e0e0;
 }
 
-body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background: var(--bg-color); 
-    color: var(--text-color); 
-    margin: 0; 
-    padding: 20px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#app { 
-    max-width: 800px; 
-    width: 100%; 
+#app {
+    max-width: 800px;
+    width: 100%;
 }
 
-header { 
-    text-align: center; 
-    margin-bottom: 40px; 
+header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-#file-list { 
-    list-style: none; 
-    padding: 0; 
+/* Breadcrumbs */
+#breadcrumbs {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
-#file-list li { 
-    background: var(--card-bg); 
-    margin-bottom: 10px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-    transition: transform 0.2s; 
+#breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-#file-list li:hover { 
-    transform: translateY(-2px); 
+#breadcrumbs a:hover {
+    text-decoration: underline;
 }
 
-#file-list a { 
-    display: block; 
-    padding: 15px 20px; 
-    text-decoration: none; 
-    color: var(--text-color); 
-    font-weight: 500; 
+/* Section headings */
+#app h2 {
+    font-size: 16px;
+    color: #888;
+    margin: 20px 0 10px 5px;
+    font-weight: 500;
 }
 
-#viewer { 
-    background: var(--card-bg); 
-    padding: 30px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    line-height: 1.6; 
+/* Folder list */
+#folder-list,
+#file-list {
+    list-style: none;
+    padding: 0;
 }
 
-#viewer h1 { 
-    color: var(--primary-color); 
-    border-bottom: 1px solid #eee; 
-    padding-bottom: 10px; 
+.folder-item,
+.file-item {
+    margin-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
 }
 
-.back-btn { 
-    display: inline-block; 
-    margin-bottom: 20px; 
-    color: var(--primary-color); 
-    text-decoration: none; 
-    font-weight: bold; 
-    cursor: pointer; 
+.folder-item:hover,
+.file-item:hover {
+    transform: translateY(-2px);
+}
+
+.folder-item a,
+.file-item a {
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.folder-item {
+    background: #e8f4fd;
+}
+
+.folder-item a {
+    color: #1a73e8;
+}
+
+.file-item {
+    background: var(--card-bg);
+}
+
+/* Viewer */
+#viewer {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    line-height: 1.6;
+}
+
+#viewer h1 {
+    color: var(--primary-color);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
 }
