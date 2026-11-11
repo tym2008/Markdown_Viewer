@@ -24,15 +24,6 @@ Since $f(x)$ is not continuous at any $a \neq 0$, it cannot be differentiable at
 
 ### (b) For $p > 0$, analyze the differentiability of $g(x) = |x|^p*D(x)$ at $0$.
 
-
-
-**Answer:**
-
-* If **$p > 1$**, $g(x)$ is **differentiable** at $0$, with $g'(0) = 0$.
-* If **$0 < p \le 1$**, $g(x)$ is **not differentiable** at $0$.
-
-**Proof:**
-
 Since $0$ is rational, $D(0) = 1$, and:
 $$g(0) = |0|^p*D(0) = 0*1 = 0$$
 By definition, $g$ is differentiable at $0$ if and only if the limit exists:
